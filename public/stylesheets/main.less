@@ -94,14 +94,21 @@ section {
 
 @imageWidth: 400px;
 @imagePadding: 10px;
+@imagePanelWidth: @imageWidth + (2 * @imagePadding) + 2px;
 
-.image {
-	width: @imageWidth + (2 * @imagePadding) + 2;
+.image-panel {
+	width: @imagePanelWidth;
 	float: left;
-	img {
+	.frame {
 		border: 1px solid #ccc;
 		padding: 10px;
 		width: @imageWidth;
+		.image {
+			width: @imageWidth;
+		}
+		.caption {
+			margin-top: 5px;
+		}
 	}
 	.next {
 		margin-top: 1em;
@@ -112,13 +119,14 @@ section {
 	}
 }
 
-@categoryListWidth: 300px;
+@categoryPanelWidth: 300px;
 
-.categories {
-	float: right;
-	width: @pageWidth - (@imageWidth + (2 * @imagePadding) + 2) - 20px;
+.category-panel {
+	float: left;
+	margin-left: 20px;
+	width: @categoryPanelWidth;
 	.zap {
-		width: @categoryListWidth;
+		width: @categoryPanelWidth;
 		text-align: center;
 		.button {
 			font-size: 20px;
@@ -130,18 +138,25 @@ section {
 .category-list {
 	margin: 0;
 	padding: 0;
-	width: @categoryListWidth;
+	width: @categoryPanelWidth;
 	li {
 		list-style-type: none;
 		margin-bottom: 2em;
 	}
 	.button {
 		text-align: left;
-		width: @categoryListWidth - 32px; /* button padding and border */
+		width: @categoryPanelWidth - 32px; /* button padding and border */
 		font-size: 14px;
 	}
 }
 
+@statsPanelWidth: @pageWidth - @imagePanelWidth - 20px - @categoryPanelWidth - 20px;
+
+.stats-panel {
+	float: left;
+	margin-left: 20px;
+	width: @statsPanelWidth;
+}
 
 footer {
 }

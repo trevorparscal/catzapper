@@ -24,13 +24,16 @@
 			<nav>
 			</nav>
 			<section class="content">
-				<div class="image">
-					<img id="image" src="images/lolcat.jpg" alt="Image to categorise" />
+				<div class="image-panel">
+					<div id="frame" class="frame">
+						<img id="image" class="image" src="images/lolcat.jpg" alt="Image to categorise" />
+						<div id="caption" class="caption"></div>
+					</div>
 					<div class="next">
 						<a id="next" class="button button-cancel" href="#">WAT?! Show me a different image...</a>
 					</div>
 				</div>
-				<div class="categories">
+				<div class="category-panel">
 					<ul class="category-list">
 						<li><a class="button" href="#">Category 1</a></li>
 						<li><a class="button" href="#">Category 2</a></li>
@@ -40,6 +43,9 @@
 					<div class="zap">
 						<a class="button button-submit" href="#">Zap!</a>
 					</div>
+				</div>
+				<div class="stats-panel">
+					Your score
 				</div>
 			</section>
 			<footer>
