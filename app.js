@@ -1,10 +1,13 @@
 var express = require( 'express' ),
-	routes = require( './routes' ),
+	routes = {
+		'index': require( './routes/index' ).index,
+		'random': require( './routes/random' ).random
+	},
 	http = require( 'http' ),
 	path = require( 'path' ),
 	less = require( 'less-middleware' );
 	os = require( 'os' ),
-	app = express(),
+	app = express();
 
 app.configure( function () {
 	var pub = path.join( __dirname, 'public' ),
@@ -34,6 +37,8 @@ app.configure( 'development', function () {
 } );
 
 app.get( '/', routes.index );
+
+app.get( '/random', routes.random );
 
 http.createServer( app ).listen( app.get( 'port' ), function () {
 	console.log( 'Express server listening on port ' + app.get( 'port' ) );
