@@ -1,5 +1,10 @@
 @pageWidth: 960px;
 
+/* Extra reset */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+}
+
 /* Core layout */
 
 #wrapper {
@@ -26,68 +31,54 @@ section {
 
 /* Widgets */
 
+.button-colours( @from, @to, @boxShadow, @border, @textShadow, @textColour: #fff ) {
+	box-shadow :inset 0px 1px 0px 0px @boxShadow;
+	background: -webkit-linear-gradient( top, @from 5%, @to 100% );
+	background:    -moz-linear-gradient( top, @from 5%, @to 100% );
+	background:         linear-gradient( to bottom, @from 5%, @to 100% );
+	background-color: @from;
+	border: 1px solid @border;
+	color: @textColour;
+	text-shadow: 1px 1px 0px @textShadow;
+	&:hover {
+		background: -webkit-linear-gradient( top, @to 5%, @from 100% );
+		background:    -moz-linear-gradient( top, @to 5%, @from 100% );
+		background:         linear-gradient( to bottom, @to 5%, @from 100% );
+		background-color: @to;
+	}
+}
+
 .button {
-	box-shadow: inset 0px 1px 0px 0px #cae3fc;
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #4197ee) );
-	background: -moz-linear-gradient( center top, #79bbff 5%, #4197ee 100% );
-	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#4197ee');*/
-	background-color: #79bbff;
+	cursor: pointer;
+	box-shadow: inset 0px 1px 0px 0px;
 	border-radius: 3px;
 	text-indent: 0;
-	border: 1px solid #469df5;
+	border: 1px solid;
 	display: inline-block;
-	color: #ffffff;
 	font-weight: bold;
 	font-style: normal;
 	text-decoration: none;
-	text-shadow: 1px 1px 0px #287ace;
+	text-shadow: 1px 1px 0px;
 	padding: 0 15px;
 	line-height: 200%;
-	&:hover {
-		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4197ee), color-stop(1, #79bbff) );
-		background: -moz-linear-gradient( center top, #4197ee 5%, #79bbff 100% );
-		/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4197ee', endColorstr='#79bbff');*/
-		background-color: #4197ee;
-		cursor: pointer;
-	}
+
+	.button-colours( #79bbff, #4197ee, #cae3fc, #469df5, #287ace );
+
 	&:active {
 		position: relative;
 		top: 1px;
 	}
+	&.selected {
+		.button-colours( #ff5bb0, #ef027d, #fbafe3, #ee1eb5, #c70067 );
+	}
 }
 
 .button-submit {
-	box-shadow :inset 0px 1px 0px 0px #c1ed9c;
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9dce2c), color-stop(1, #8cb82b) );
-	background: -moz-linear-gradient( center top, #9dce2c 5%, #8cb82b 100% );
-	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9dce2c', endColorstr='#8cb82b');*/
-	background-color: #9dce2c;
-	border: 1px solid #83c41a;
-	color: #ffffff;
-	text-shadow: 1px 1px 0px #689324;
-	&:hover {
-		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8cb82b), color-stop(1, #9dce2c) );
-		background: -moz-linear-gradient( center top, #8cb82b 5%, #9dce2c 100% );
-		/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8cb82b', endColorstr='#9dce2c');*/
-		background-color: #8cb82b;
-	}
+	.button-colours( #9dce2c, #8cb82b, #c1ed9c, #83c41a, #689324 );
 }
 
 .button-cancel {
-	box-shadow: inset 0px 1px 0px 0px #f5978e;
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
-	background: -moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
-	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');*/
-	background-color: #f24537;
-	border: 1px solid #d02718;
-	color: #ffffff;
-	text-shadow: 1px 1px 0px #810e05;
-	&:hover {
-		background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
-		background: -moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
-		/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');*/
-		background-color: #c62d1f;
-	}
+	.button-colours( #f24537, #c62d1f, #f5978e, #d02718, #810e05 );
 }
 
 /* Page layout */
@@ -159,9 +150,6 @@ section {
 	float: left;
 	margin-left: 20px;
 	width: @statsPanelWidth;
-	h2 {
-		margin: 0;
-	}
 }
 
 .stats {
