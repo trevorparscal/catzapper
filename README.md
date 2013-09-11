@@ -1,1 +1,1 @@
-# MediaWiki image categorization game
+# MediaWiki image categorisation game
