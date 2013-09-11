@@ -24,10 +24,23 @@
 				} )
 				.attr( 'src', data.info.thumburl );
 		} );
+		return false;
 	}
 
 	function showImage( data ) {
-		$( '#caption' ).text( data.title.replace( /^[^:]+:/, '' ) );
+		$( '#caption' )
+			.text( data.title.replace( /^[^:]+:/, '' ) )
+			.append( ' (' )
+			.append(
+				$( '<a>' )
+					.attr( {
+						'href': data.info.descriptionurl,
+						'target': '_blank'
+					} )
+					.text( 'link' )
+			)
+			.append( ')' )
+		;
 		$( '#frame' ).css( 'opacity', '' );
 	}
 
