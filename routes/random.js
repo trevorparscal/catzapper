@@ -161,6 +161,6 @@ exports.random = function( req, res ) {
 			);
 		}
 
-		queue( getImageCategories, getImageInfo, getImageUsage );
+		queue( getImageCategories, getImageInfo /*, getImageUsage */ );
 	} );
 };
